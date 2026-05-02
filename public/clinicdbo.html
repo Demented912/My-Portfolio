@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinic Database Project</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #050505;
+            color: #f4f4f4;
+            line-height: 1.6;
+        }
+
+        /* Background Video Fix */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Set to -1 to ensure it stays back */
+        }
+
+        /* Main Page Container */
+        .page {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 900px;
+            margin: 4rem auto; /* Centers the container and adds top/bottom spacing */
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px); /* Smooth glass effect */
+            border: 1px solid rgba(0, 240, 208, 0.18);
+            box-shadow: 0 0 40px rgba(0, 240, 208, 0.15);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        /* Typography */
+        h1 {
+            margin: 0.5rem 0 1.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta {
+            color: #00f0d0;
+            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        /* Large Project Image */
+        .project-image {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 208, 0.3);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .gallery-title {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .gallery-caption {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Navigation Link */
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 999px;
+            background: rgba(0, 240, 208, 0.1);
+            color: #00f0d0;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(0, 240, 208, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #00f0d0;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 208, 0.4);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 600px) {
+            .page { padding: 1.5rem; margin: 1rem auto; }
+            h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <video class="background-video" autoplay loop muted playsinline>
+        <source src="/bgretro.mp4" type="video/mp4" />
+    </video>
+
+    <div class="page">
+        <span class="meta">Database Project</span>
+        <h1>Clinic Database</h1>
+        
+        <img src="/logn.PNG" alt="Budget Life project screenshot" class="project-image" />
+        
+       <p><strong>Clinic DBO</strong> is a comprehensive database management system designed to streamline healthcare administration. It provides a centralized platform for handling patient appointments, medical records, and personnel management with a focus on data accuracy and workflow efficiency.</p>
+
+<p>The system features a robust administrative dashboard that allows for the seamless addition of patients and staff, as well as real-time appointment scheduling. By maintaining a detailed history of the database, the platform ensures that all medical and administrative interactions are logged, providing a secure and traceable record for clinic operations.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/home.PNG" alt="Main Menu" class="gallery-image" />
+                <h2 class="gallery-title">Login System </h2>
+                <p class="gallery-caption">Integrated login system that identifies user roles upon authentication. Staff gain access to patient scheduling, while Admins unlock the dashboard for adding personnel and auditing database history.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="/patients.PNG" alt="Game HUD" class="gallery-image" />
+                <h2 class="gallery-title">Patient Management</h2>
+                <p class="gallery-caption">Enables Doctors and Nurses to register and view patients with fields for Name, Gender, Contact, and History. Includes automated Patient ID generation upon creation for seamless tracking and an organized directory for quick record management.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="/appoint.PNG" alt="Sleep System" class="gallery-image" />
+                <h2 class="gallery-title">Appointment Management</h2>
+                <p class="gallery-caption">Allows Doctors and Nurses to schedule appointments on a patient's preferred date. The system provides the flexibility to select specific attending doctors, ensuring organized scheduling and efficient patient-to-provider matching.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="/staff.PNG" alt="Shop System" class="gallery-image" />
+                <h2 class="gallery-title">Staff Management</h2>
+                <p class="gallery-caption">A dynamic system for managing clinic staff, including roles, responsibilities, and scheduling.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="/historry.PNG" alt="School System" class="gallery-image" />
+                <h2 class="gallery-title">History Tracking</h2>
+                <p class="gallery-caption">Maintains a comprehensive audit trail of all system activities. This module tracks the database history, allowing staff and admins to review past appointments, record updates, and clinical logs to ensure accountability and data transparency.</p>
+            </div>
+        </div>
+
+        <a class="back-link" href="/">← Back to Portfolio</a>
+    </div>
+
+</body>
+</html>
