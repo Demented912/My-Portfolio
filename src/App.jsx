@@ -143,7 +143,7 @@ function App() {
               <div className="education-intro">
                 <span className="section-label">Academic Journey</span>
                 <h2>Education</h2>
-                <p>My academic foundation towards learning in software development and relevant technologies.</p>
+                <p>My academic foundation towards learning in software development and game development.</p>
               </div>
 
               <div>
