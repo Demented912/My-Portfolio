@@ -52,9 +52,25 @@ body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: white; }
 .nav-links a { color: #ffffff; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
 .nav-links a:hover { color: white; }
 
-.resume-btn {
-  background: white; color: black; border: none;
-  padding: 8px 20px; border-radius: 4px; font-weight: 600; cursor: pointer;
+.resume-btn,
+.resume-btn:link,
+.resume-btn:visited {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+  color: black !important;
+  text-decoration: none;
+
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resume-btn:hover {
+  color: black !important;
 }
 
 /* Hero Section */

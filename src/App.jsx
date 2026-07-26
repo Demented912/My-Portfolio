@@ -92,7 +92,16 @@ function App() {
           <ul className="nav-links">
             <li><a href="#projects">Projects</a></li>
             <li><a href="#about">About</a></li>
-            <li><button className="resume-btn">Resume</button></li>
+            <li>
+  <a
+    href="/resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="resume-btn"
+  >
+    Resume
+  </a>
+</li>
           </ul>
         </nav>
 
@@ -102,7 +111,7 @@ function App() {
             <p><span className="typing-text">{roleText}</span></p>
             <div className="skill-marquee-wrapper">
               <div className="skill-marquee">
-              {[
+                {[
   'Java',
   'VB.NET',
   'JavaScript',
