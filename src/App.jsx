@@ -105,7 +105,7 @@ function App() {
         <section id="about" className="about-section">
           <div className="about-grid">
             <div className="about-image-wrapper">
-              <img src="/ME.jpg" alt="John Roman Ruga" className="about-image" />
+              <img src="/gradme.jpg" alt="John Roman Ruga" className="about-image" />
             </div>
             <div className="about-copy">
               <span className="section-label">About Me</span>
@@ -156,7 +156,6 @@ function App() {
                 </div>
 
                 <div className="education-meta">
-                  <span className="education-score">1.99 GWA</span>
                   <span className="education-date">Sept 2022 - July 2026</span>
                 </div>
 
