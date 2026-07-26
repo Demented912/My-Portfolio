@@ -1,12 +1,26 @@
 import { useEffect, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import './App.css'
 
 const roles = ['Game Dev', 'Web Dev']
+const CONTACT_EMAIL = 'jrruga912@gmail.com'
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const initialFormState = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+}
 
 function App() {
   const [activeRoleIndex, setActiveRoleIndex] = useState(0)
   const [roleText, setRoleText] = useState('')
   const [typing, setTyping] = useState(true)
+  const [formData, setFormData] = useState(initialFormState)
+  const [formStatus, setFormStatus] = useState('idle')
+  const [formError, setFormError] = useState('')
 
   useEffect(() => {
     const currentRole = roles[activeRoleIndex]
@@ -35,6 +49,57 @@ function App() {
 
     return () => clearTimeout(timeout)
   }, [activeRoleIndex, roleText, typing])
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target
+    setFormData((current) => ({ ...current, [name]: value }))
+    if (formStatus !== 'idle') {
+      setFormStatus('idle')
+      setFormError('')
+    }
+  }
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault()
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      setFormStatus('error')
+      setFormError('Email service is not configured yet. Please email me directly instead.')
+      return
+    }
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject || !formData.message.trim()) {
+      setFormStatus('error')
+      setFormError('Please fill in all required fields.')
+      return
+    }
+
+    setFormStatus('sending')
+    setFormError('')
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name.trim(),
+          from_email: formData.email.trim(),
+          reply_to: formData.email.trim(),
+          to_email: CONTACT_EMAIL,
+          subject: formData.subject,
+          message: formData.message.trim(),
+        },
+        EMAILJS_PUBLIC_KEY,
+      )
+
+      setFormStatus('success')
+      setFormData(initialFormState)
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      setFormStatus('error')
+      setFormError('Something went wrong sending your message. Please try again or email me directly.')
+    }
+  }
 
   const projects = [
     {
@@ -226,6 +291,11 @@ function App() {
                   <h3>LinkedIn</h3>
                   <p>Connect with me</p>
                 </a>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="contact-box contact-box-link">
+                  <div className="contact-icon">@</div>
+                  <h3>Email</h3>
+                  <p>{CONTACT_EMAIL}</p>
+                </a>
                 <div className="contact-box contact-box--primary">
                   <div className="contact-icon">+</div>
                   <h3>Available for Work</h3>
@@ -233,21 +303,35 @@ function App() {
                 </div>
               </div>
 
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleFormSubmit}>
               <div className="contact-row">
                 <label>
                   Full Name *
-                  <input type="text" placeholder="Your full name" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    placeholder="Your full name"
+                    required
+                  />
                 </label>
                 <label>
                   Email Address *
-                  <input type="email" placeholder="your.email@example.com" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    placeholder="your.email@example.com"
+                    required
+                  />
                 </label>
               </div>
               <label>
                 Subject *
-                <select>
-                  <option>Select a subject</option>
+                <select name="subject" value={formData.subject} onChange={handleFormChange} required>
+                  <option value="">Select a subject</option>
                   <option>Project Inquiry</option>
                   <option>Job Opportunity</option>
                   <option>General Question</option>
@@ -255,9 +339,28 @@ function App() {
               </label>
               <label>
                 Message *
-                <textarea placeholder="Tell me about your project or opportunity..."></textarea>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleFormChange}
+                  placeholder="Tell me about your project or opportunity..."
+                  required
+                ></textarea>
               </label>
-              <button type="submit">Send Message</button>
+              {formStatus === 'success' && (
+                <p className="form-feedback form-feedback--success">
+                  Message sent! I&apos;ll get back to you at {CONTACT_EMAIL} soon.
+                </p>
+              )}
+              {formStatus === 'error' && (
+                <p className="form-feedback form-feedback--error">
+                  {formError}{' '}
+                  <a href={`mailto:${CONTACT_EMAIL}`}>Email me directly</a>
+                </p>
+              )}
+              <button type="submit" disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </div>

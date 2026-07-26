@@ -632,6 +632,36 @@ label {
   opacity: 0.95;
 }
 
+.contact-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-feedback {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.form-feedback--success {
+  background: rgba(0, 240, 208, 0.12);
+  border: 1px solid rgba(0, 240, 208, 0.28);
+  color: #b8fff4;
+}
+
+.form-feedback--error {
+  background: rgba(255, 80, 120, 0.12);
+  border: 1px solid rgba(255, 80, 120, 0.28);
+  color: #ffd0dc;
+}
+
+.form-feedback a {
+  color: #00f0d0;
+}
+
 @media (max-width: 900px) {
   .project-card {
     grid-template-columns: 1fr;
