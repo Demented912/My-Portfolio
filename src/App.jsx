@@ -179,7 +179,7 @@ function App() {
                     </div>
 
                     <h4>Skills & Technologies</h4>
-                    <p>JavaScript C++ React Vite SQL</p>
+                    <p>Java, VB.NET, JavaScript, HTML, CSS, C, C#, Python, GDScript, SQL, MySQL, GDevelop</p>
                   </div>
                 </div>
               </div>
