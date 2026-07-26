@@ -102,9 +102,26 @@ function App() {
             <p><span className="typing-text">{roleText}</span></p>
             <div className="skill-marquee-wrapper">
               <div className="skill-marquee">
-                {['HTML', 'CSS', 'Java', 'Python', 'C#', 'C++', 'GitHub', 'MySQL', 'React', 'Vite', 'HTML', 'CSS', 'Java', 'Python', 'C#', 'C++', 'GitHub', 'MySQL', 'React', 'Vite'].map((skill, idx) => (
-                  <span key={idx} className="skill-chip">{skill}</span>
-                ))}
+              {[
+  'Java',
+  'VB.NET',
+  'JavaScript',
+  'HTML',
+  'CSS',
+  'C',
+  'C#',
+  'Python',
+  'GDScript',
+  'SQL',
+  'MySQL',
+  'GDevelop',
+  'Godot',
+  'Vite',
+  'React',
+  'Git'
+].map((skill, idx) => (
+  <span key={idx} className="skill-chip">{skill}</span>
+))}
               </div>
             </div>
           </div>
@@ -179,7 +196,7 @@ function App() {
                     </div>
 
                     <h4>Skills & Technologies</h4>
-                    <p>Java, VB.NET, JavaScript, HTML, CSS, C, C#, Python, GDScript, SQL, MySQL, GDevelop</p>
+                    <p>Java, VB.NET, JavaScript, HTML, CSS, C, C#, Python, GDScript, SQL, MySQL, GDevelop, Godot, Vite, React</p>
                   </div>
                 </div>
               </div>
