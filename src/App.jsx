@@ -46,6 +46,14 @@ function App() {
       detailsUrl: "/budget-life.html"
     },
     {
+      title: "Tales of Destiny", 
+      desc: "A 2D top-down roguelite survival game made in GDevelop, inspired by Vampire Survivors.",
+      tech: ["JavaScript", "GDevelop"],
+      status: "School Project",
+      image: "/tales1.PNG", 
+      detailsUrl: "/TalesGame.html"
+    },
+    {
       title: "Clinic Database", 
       desc: "A secure healthcare management system with dual-role authentication and automated patient tracking.",
       tech: ["MySQL", "Visual Basic", "Form.vb"],
